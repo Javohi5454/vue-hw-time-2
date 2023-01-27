@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="app">
+        <input type="text" placeholder="Введите время" v-model="input">
+    
+        <div v-if="input.lenght != 0 && !isNaN(input)">
+          <p v-if="input == 1">{{input}} час ночи</p>
+          <p v-else-if="input >= 2 && input <= 4">{{input}} часа ночи</p>
+          <p v-else-if="input >= 5 && input <= 11">{{input}} часов утра</p>
+          <p v-else-if="input == 12"> Полдень</p>
+          <p v-else-if="input == 13">{{input}} час дня</p>
+          <p v-else-if="input >= 14 && input <= 16">{{input}} часа дня</p>
+          <p v-else-if="input >= 17 && input <= 21">{{input}} часов вечера</p>
+          <p v-else>Что пошло не так</p>
+        </div>
+        
+    </div>
+    <script>
+        const app = {
+            data() {
+                return {
+                 input: ''
+
+                }
+            },
+        }
+        
+        Vue.createApp(app).mount('#app')
+    </script>
+    
+</body>
+</html>
